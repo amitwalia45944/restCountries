@@ -1,0 +1,230 @@
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.App {
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8rem;
+  
+}
+
+.countries-app {
+  display: flex;
+  justify-content: space-between;
+}
+
+.countries-app input {
+  padding: 1rem;
+  flex-basis: 30vw;
+  background-image: url('./assets/images.png');
+  background-repeat: no-repeat;
+  background-position: 95%;
+  background-size: 20px
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f3faff;
+  box-shadow: 0 0 4px #bbd0e2;
+  position: fixed;
+  padding-inline: 2rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+.dark-mode-nav {
+  background-color: #333;
+}
+
+.inner-nav {
+  display: flex;
+  gap: 1rem;
+  align-self: center;
+}
+
+.light-theme {
+  background-color: white;
+  color: black;
+}
+
+.dark-theme {
+  background-color: #333;
+  color: white;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app-header-main-content {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: flex-start; */
+  gap: 6rem;
+}
+
+.card-container-country {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 20%;
+  box-shadow: 0 0 10px #92989e;
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #fff;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card-container-country :hover {
+  box-shadow: 1px 1px 8px #d4ecff;
+  transform: translateY(-2px);
+}
+
+.country-detail-part {
+  display: flex;
+  flex-direction: column;
+}
+
+.country-detail-part {
+  padding: 2rem;
+  align-self: stretch;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  flex-basis: 120px;
+  height: 120px;
+  display: none;
+  animation: spin 2s linear infinite;
+}
+
+/*for search file*/
+
+.found-main {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  flex-direction: column;
+  
+}
+
+.country-details img {
+  width: 40vw;
+  height: 50vh;
+  object-fit: cover;
+}
+
+.card-container-country img {
+  height: 15rem;
+}
+
+.country-details {
+  display: flex;
+  gap: 10rem;
+}
+
+.country-detail-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.country-detail-information .top {
+  display: flex;
+}
+
+.country-detail-information .middle {
+  display: flex;
+  flex-direction: row;
+  text-align: start;
+  gap: 8rem;
+}
+
+.country-detail-information .middle span {
+  font-weight: bold;
+}
+
+
+.country-detail-information .bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+
+}
+
+.country-detail-information .bottom span {
+  font-weight: bold;
+
+}
+
+
+/*for search country*/
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+@media screen and (max-width: 480px) {}
