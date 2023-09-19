@@ -1,41 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import CountriesApp from './countries'
-import CountryDetail from './countryDetail'
+import React, { useState } from 'react';
+import './App.css';
+import CountriesApp from './countries';
+import CountryDetail from './countryDetail';
 import Header from './header';
-
 import {
   BrowserRouter as Router,
   Route,
-  Switch,
-  Link,
-  useParams,
+  Routes
 } from 'react-router-dom';
 
-
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-    <>
+    <div className="App">
       <Router>
-        <Route exact path="/">
-          <div>
-            <CountriesApp />
-          </div>
-        </Route>
-
-        <Route path="/country/:name">
-          <div><CountryDetail /></div>
-        </Route>
-
+        <Header />
+        <Routes>
+          <Route path="/" element={<CountriesApp />} />
+          <Route path="/country/:name" element={<CountryDetail />} />
+        </Routes>
       </Router>
-
-
-    </>
-  )
-};
+    </div>
+  );
+}
 
 export default App;

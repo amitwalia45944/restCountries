@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from './header';
-
 
 function CountryDetail() {
     const { name } = useParams();
     const [found, setCountryData] = useState(null);
     const [theme, setTheme] = useState(false);
 
+    const navigate = useNavigate();
+
     const changeTheme = () => {
         setTheme(!theme);
     };
-
-    const history = useHistory();
 
     useEffect(() => {
         const apiUrl = `https://restcountries.com/v3.1/name/${name}`;
@@ -46,7 +45,7 @@ function CountryDetail() {
 
                 <div className="header-content">
                     <div className="search-part">
-                        <button onClick={() => history.goBack()}>Back</button>
+                        <button onClick={() => navigate(-1)}>Back</button>
                     </div>
 
                     <div className="country-details ">
