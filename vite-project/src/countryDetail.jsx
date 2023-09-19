@@ -1,17 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Header from './header';
+import Navigation from './Navigation';
 
 function CountryDetail() {
     const { name } = useParams();
     const [found, setCountryData] = useState(null);
-    const [theme, setTheme] = useState(false);
 
     const navigate = useNavigate();
-
-    const changeTheme = () => {
-        setTheme(!theme);
-    };
 
     useEffect(() => {
         const apiUrl = `https://restcountries.com/v3.1/name/${name}`;
@@ -39,9 +34,9 @@ function CountryDetail() {
 
     return (
         <>
-            <div className={`App ${theme ? 'dark-theme' : 'light-theme'}`}>
+            <div className='App'>
 
-                <Header theme={theme} changeTheme={changeTheme} />
+                <Navigation />
 
                 <div className="header-content">
                     <div className="search-part">

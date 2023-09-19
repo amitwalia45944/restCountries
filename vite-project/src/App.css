@@ -174,7 +174,6 @@ main {
   font-weight: bold;
 }
 
-
 .country-detail-information .bottom {
   display: flex;
   justify-content: space-between;
@@ -189,20 +188,13 @@ main {
 
 .header-content {
   margin-top: 8rem;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
 }
 
 
 /*for search country*/
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 
 

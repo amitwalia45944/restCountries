@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import CountriesApp from './countries';
 import CountryDetail from './countryDetail';
-import Header from './header';
+import { useDarkTheme } from './Theme';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -10,18 +11,19 @@ import {
 } from 'react-router-dom';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { isDarkTheme, toggleTheme } = useDarkTheme();
 
   return (
-    <div className="App">
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<CountriesApp />} />
-          <Route path="/country/:name" element={<CountryDetail />} />
-        </Routes>
-      </Router>
-    </div>
+
+    <Router>
+        <div className={isDarkTheme ? 'dark-theme' : 'light-theme'}>
+
+          <Routes>
+            <Route path="/" element={<CountriesApp />} />
+            <Route path="/country/:name" element={<CountryDetail />} />
+          </Routes>
+        </div>
+    </Router>
   );
 }
 
