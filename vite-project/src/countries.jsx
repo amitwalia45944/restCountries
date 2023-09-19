@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import Header from './header';
 
 const CountriesApp = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,8 +13,6 @@ const CountriesApp = () => {
   const [subRegion, setSubRegionFilter] = useState('');
   const [theme, setTheme] = useState(false);
   const [searchValue, setSearch] = useState('');
-  const [found, setfound] = useState(null);
-
 
   useEffect(() => {
     setIsLoading(true);
@@ -79,13 +79,8 @@ const CountriesApp = () => {
     return searchResult;
   };
 
-
   const changeTheme = () => {
     setTheme(!theme);
-  };
-
-  const findCountry = (country) => {
-    setfound(country);
   };
 
   const regions = [...new Set(countries.map((country) => {
@@ -97,69 +92,17 @@ const CountriesApp = () => {
   }))]
 
   return (
+
     <div className={`App ${theme ? 'dark-theme' : 'light-theme'}`}>
 
-      <div className={`nav ${theme ? 'dark-mode-nav' : ''}`}>
-        <h1>Where in the world?</h1>
-        <div className="inner-nav">
-          <a className={`${theme ? 'dark-theme' : 'light-theme'}`} href="#" onClick={() => changeTheme()}>
-            {theme ? '🌞 Light Mode' : '🌙 Dark Mode'}
-          </a>
-        </div>
-      </div>
+      <Header theme={theme} changeTheme={changeTheme} />
 
       <main className="App-main">
-
         {
           isLoading ? (<div>Loading....</div>
           ) : isError ? (<div>Error: {isError}</div>
           ) : isEmpty ? (
             <div>Empty</div>
-          ) : found ? (
-
-            <div className="found-main">
-
-              <div className="search-part">
-                <button onClick={() => setfound(null)}>Back</button>
-              </div>
-
-              <div className="country-details ">
-
-                <div className="country-details-header">
-                  <img src={found.flags.png} alt={found.name.common} />
-                </div>
-
-                <div className="country-detail-information">
-
-                  <div className="top">
-                    <h2>{found.name.common}</h2>
-                  </div>
-
-                  <div className="middle">
-                    <div className="middle-left">
-                      <p><span>Native Name:</span> {found.name.common}</p>
-                      <p><span>Population:</span> {found.population}</p>
-                      <p><span>Region:</span> {found.region}</p>
-                      <p><span>Sub-Region:</span> {found.subregion}</p>
-                      <p><span>Capital:</span> {found.capital}</p>
-
-                    </div>
-
-                    <div className="middle-right">
-                      <p><span>Currencies:</span>  {Object.values(found.currencies)[0].name}</p>
-                      <p><span>Top Level Domain:</span> {found.tld}</p>
-                      <p><span>Languages:</span> {Object.values(found.languages).join(', ')}</p>
-                    </div>
-                  </div>
-
-                  <div className="bottom">
-                    <p><span>Bordering Countries:</span> {found.borders ? found.borders.join(', ') : 'No border countries'}</p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
           ) : (
 
             <div className="card-container">
@@ -234,33 +177,39 @@ const CountriesApp = () => {
 
               <div className="app-header-main-content">
 
-                
-                {Search().length > 0 ? 
-                (Search().map((country, index) => (
+                {Search().length > 0 ?
 
-                  <div className="card-container-country" key={index} onClick={() => findCountry(country)}>
+                  (Search().map((country, index) => (
+                    
+                      <div className="card-container-country" key={index} onClick={() => (window.location.href = `/country/${country.name.common}`)} >
 
-                    <img src={country.flags.png} alt={country.name.common} />
+                        <img src={country.flags.png} alt={country.name.common.toLowerCase()} />
 
-                    <div className={`country-detail-part ${theme ? 'dark-theme' : 'light-theme'}`}>
-                      <h4 className='country-name'>{country.name.common}</h4>
-                      <div className="country-desc">
-                        <h5>Population: {country.population}</h5>
-                        <h5>Region: {country.region}</h5>
-                        <h5>Sub-Region: {country.subregion}</h5>
-                        <h5>Capital: {country.capital}</h5>
+                        <div className={`country-detail-part ${theme ? 'dark-theme' : 'light-theme'}`}>
+                          <h4 className='country-name'>{country.name.common}</h4>
+                          <div className="country-desc">
+                            <h5>Population: {country.population}</h5>
+                            <h5>Region: {country.region}</h5>
+                            <h5>Sub-Region: {country.subregion}</h5>
+                            <h5>Capital: {country.capital}</h5>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
-                )))
-                : (<div>No result</div>)
+                    
+                  )))
+                  
+                  : (<div>No result</div>)
                 }
               </div>
             </div>
-          )}
+          )
+
+        }
 
       </main>
+
     </div>
+
   );
 };
 

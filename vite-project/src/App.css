@@ -87,7 +87,6 @@ main {
 .app-header-main-content {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: flex-start; */
   gap: 6rem;
 }
 
@@ -186,6 +185,10 @@ main {
 .country-detail-information .bottom span {
   font-weight: bold;
 
+}
+
+.header-content {
+  margin-top: 8rem;
 }
 
 
