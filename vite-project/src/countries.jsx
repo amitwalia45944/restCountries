@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Header from './header';
 
 const CountriesApp = () => {
@@ -13,6 +13,8 @@ const CountriesApp = () => {
   const [subRegion, setSubRegionFilter] = useState('');
   const [theme, setTheme] = useState(false);
   const [searchValue, setSearch] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsLoading(true);
@@ -181,7 +183,7 @@ const CountriesApp = () => {
 
                   (Search().map((country, index) => (
                     
-                      <div className="card-container-country" key={index} onClick={() => (window.location.href = `/country/${country.name.common}`)} >
+                      <div className="card-container-country" key={index} onClick={() => (navigate(`/country/${country.name.common}`))} >
 
                         <img src={country.flags.png} alt={country.name.common.toLowerCase()} />
 
