@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import CountriesApp from './countries';
 import CountryDetail from './countryDetail';
-import { useDarkTheme } from './Theme';
+import { useBlackTheme } from './Theme';
 
 import {
   BrowserRouter as Router,
@@ -11,12 +11,12 @@ import {
 } from 'react-router-dom';
 
 function App() {
-  const { isDarkTheme, toggleTheme } = useDarkTheme();
+  const { AlterTheme, changeTheme } = useBlackTheme();
 
   return (
 
     <Router>
-        <div className={isDarkTheme ? 'dark-theme' : 'light-theme'}>
+        <div className={AlterTheme ? 'dark-theme' : 'light-theme'}>
 
           <Routes>
             <Route path="/" element={<CountriesApp />} />

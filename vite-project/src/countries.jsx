@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Navigation from './Navigation';
-import { useDarkTheme } from './Theme';
+import { useBlackTheme } from './Theme';
 
 const CountriesApp = () => {
-  const { isDarkTheme, toggleTheme } = useDarkTheme();
+  const { AlterTheme, changeTheme } = useBlackTheme();
 
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(null);
@@ -121,7 +121,7 @@ const CountriesApp = () => {
                   </div>
 
                   <select
-                    className={isDarkTheme ? 'dark-theme' : 'light-theme'}
+                    className={AlterTheme ? 'dark-theme' : 'light-theme'}
                     value={sortBy}
                     onChange={(event) => setSortBy(event.target.value)}
                   >
@@ -131,7 +131,7 @@ const CountriesApp = () => {
                   </select>
 
                   <select
-                    className={isDarkTheme ? 'dark-theme' : 'light-theme'}
+                    className={AlterTheme ? 'dark-theme' : 'light-theme'}
                     value={sortOrder}
                     onChange={(event) => setSortOrder(event.target.value)}
                   >
@@ -140,7 +140,7 @@ const CountriesApp = () => {
                   </select>
 
                   <select
-                    className={isDarkTheme ? 'dark-theme' : 'light-theme'}
+                    className={AlterTheme ? 'dark-theme' : 'light-theme'}
                     value={subRegion}
                     onChange={(event) => setSubRegionFilter(event.target.value)}
                   >
@@ -155,7 +155,7 @@ const CountriesApp = () => {
                   </select>
 
                   <select
-                    className={isDarkTheme ? 'dark-theme' : 'light-theme'}
+                    className={AlterTheme ? 'dark-theme' : 'light-theme'}
                     value={region}
                     onChange={(event) => setRegionFilter(event.target.value)}
                   >
@@ -183,7 +183,7 @@ const CountriesApp = () => {
 
                       <img src={country.flags.png} alt={country.name.common.toLowerCase()} />
 
-                      <div className={`country-detail-part ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
+                      <div className={`country-detail-part ${AlterTheme ? 'dark-theme' : 'light-theme'}`}>
                         <h4 className='country-name'>{country.name.common}</h4>
                         <div className="country-desc">
                           <h5>Population: {country.population}</h5>
